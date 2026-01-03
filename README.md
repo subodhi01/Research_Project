@@ -456,7 +456,3 @@ For issues, questions, or contributions, please open an issue on GitHub.
 
 - [ARIMA Training & Datasets Guide](ARIMA_TRAINING_AND_DATASETS.md) - Detailed guide on ARIMA model training and dataset locations
 
----
-
-**Built with ❤️ for intelligent cloud cost management**
-
