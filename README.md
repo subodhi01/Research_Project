@@ -72,8 +72,8 @@ This component addresses the challenge of budget overruns by predicting future c
 In the future, the proposed system will extend its capabilities beyond checking a single VPS to connect directly with AWS. To improve predictive accuracy, the model will be upgraded from ARIMA to SARIMA, which allows for the use of more parameters. By improving the dataset through this live integration, the system will be able to provide much more precise financial forecasts.
 
 
-**Deployment:** **Deployment:** [http://158.220.115.171:8002/api/forecast/runs]
-                                [http://158.220.115.171:8002/api/forecast/department/forecast]
+**Deployment:** **Deployment:** [http://158.220.115.171:8000/api/forecast/runs]
+                                [http://158.220.115.171:8000/api/forecast/department/forecast]
 
 ---
 
@@ -99,7 +99,7 @@ This component focuses on the early detection of irregularities in cloud infrast
 ### Future Development
 In the future, the Anomaly Detection Engine will expand beyond its current training set of 14,440 records by integrating large-scale, real-world production data or authoritative external datasets to enhance model robustness. This richer data foundation will enable the deployment of complex multi-model ensembles, while current static thresholds will be replaced by dynamic, adaptive mechanisms that automatically tune sensitivity to historical volatility. By leveraging these authentic datasets and adaptive techniques, the system will significantly reduce false positives and ensure superior accuracy across dynamic cloud environments.
 
-**Deployment:** [http://158.220.115.171:8001/api/anomaly/detect/iforest]
+**Deployment:** [http://158.220.115.171:8000/api/anomaly/detect/iforest]
 
 
 ---
@@ -127,7 +127,7 @@ This component aims to reduce cloud waste by recommending precise rightsizing ac
 Reduction of Model Retraining Interval
 In future work, the continuous training interval of the Random Forest model will be reduced from one hour to fifteen minutes. This enhancement will allow the system to respond more rapidly to dynamic workload changes and cost fluctuations in cloud environments.
 
-**Deployment:** [http://158.220.115.171:8003/api/optimize/retrain]
+**Deployment:** [http://158.220.115.171:8000/api/optimize/retrain]
 
 
 ---
@@ -157,5 +157,5 @@ This component replaces static password trust with continuous behavioral verific
 1. Create a unique 'digital fingerprint' for each user based on their habits, allowing the system to instantly block hackers because they don't behave like the real owner.
 2. The system will automatically block login attempts from suspicious locations or unauthorized countries and immediately alert the administrator.
 
-**Deployment:** [http://158.220.115.171:8004/api/zero-trust/score-session]
+**Deployment:** [http://158.220.115.171:8000/api/zero-trust/score-session]
 
