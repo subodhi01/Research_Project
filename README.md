@@ -1,458 +1,161 @@
-# Research_Project
-# CloudCost - Intelligent Cloud Cost Management Platform
-
-A comprehensive cloud cost management and optimization platform with AI-powered forecasting, anomaly detection, budget intelligence, and zero-trust security features.
-
-![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)
-![React](https://img.shields.io/badge/React-18.3-blue.svg)
-![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-
-## 🚀 Features
-
-### 📊 Forecasting & Budget Intelligence
-- **ARIMA Time Series Forecasting**: Predict future cloud costs using statistical models
-- **Budget Comparison**: Compare forecasts against budgets with risk alerts
-- **Department Allocation**: Allocate budgets across departments with predictive analytics
-- **Scenario Planning**: Test multiple budget scenarios (what-if analysis)
-- **Budget Recommendations**: Get budget suggestions based on company size and historical data
-
-### 🔍 Anomaly Detection
-- **Real-time Anomaly Detection**: Identify unusual cost patterns using Isolation Forest and statistical methods
-- **Multi-metric Analysis**: Monitor CPU, memory, and cost anomalies
-- **Alert System**: Automated alerts for detected anomalies
-- **Historical Analysis**: Track anomaly patterns over time
-
-### ⚡ Optimization Engine
-- **Resource Optimization**: ML-powered recommendations for cost savings
-- **Right-sizing Suggestions**: Optimize instance types and configurations
-- **Cost Reduction Strategies**: Identify opportunities to reduce cloud spending
-- **Performance Metrics**: Track optimization impact
-
-### 🔐 Zero Trust Security
-- **Password Security Analysis**: ML-based password strength assessment
-- **Login Risk Scoring**: Evaluate login attempts for security risks
-- **Supervised Learning Models**: Advanced security threat detection
-- **User Behavior Analysis**: Monitor and analyze user access patterns
-
-### 📈 Monitoring & Insights
-- **Real-time Monitoring**: Live dashboard for cloud resource usage
-- **Multi-cloud Support**: Monitor VPS and AWS resources
-- **Department Tracking**: Track costs and usage by department
-- **Interactive Dashboards**: Beautiful, responsive UI with charts and visualizations
-
-## 🏗️ Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      Frontend (React)                        │
-│  - React 18.3 with React Router                            │
-│  - Recharts for data visualization                          │
-│  - Tailwind CSS for styling                                 │
-│  - Axios for API communication                              │
-└────────────────────┬────────────────────────────────────────┘
-                     │ REST API
-┌────────────────────▼────────────────────────────────────────┐
-│                   Backend (FastAPI)                         │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │  Forecasting & Budget Engine                          │  │
-│  │  - ARIMA time series forecasting                      │  │
-│  │  - Budget allocation & comparison                     │  │
-│  └──────────────────────────────────────────────────────┘  │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │  Anomaly Detection Engine                             │  │
-│  │  - Isolation Forest ML model                          │  │
-│  │  - Statistical anomaly detection                      │  │
-│  └──────────────────────────────────────────────────────┘  │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │  Optimization Engine                                  │  │
-│  │  - ML-based optimization recommendations              │  │
-│  └──────────────────────────────────────────────────────┘  │
-│  ┌──────────────────────────────────────────────────────┐  │
-│  │  Zero Trust Security                                  │  │
-│  │  - Password security analysis                         │  │
-│  │  - Login risk scoring                                │  │
-│  └──────────────────────────────────────────────────────┘  │
-└────────────────────┬────────────────────────────────────────┘
-                     │
-┌────────────────────▼────────────────────────────────────────┐
-│                    Data Layer                                │
-│  - SQLite Database (cloudcost.db)                           │
-│  - CSV Datasets (historical data)                           │
-│  - AWS Cost Explorer API                                     │
-└─────────────────────────────────────────────────────────────┘
-```
-
-## 📋 Prerequisites
-
-- **Python**: 3.8 or higher
-- **Node.js**: 16.x or higher
-- **npm** or **yarn**: Package manager
-- **AWS Account** (optional): For AWS cost integration
-- **SQLite**: Included with Python
-
-## 🛠️ Installation
-
-### 1. Clone the Repository
-
-```bash
-git clone <repository-url>
-cd cloudcost
-```
-
-### 2. Backend Setup
-
-```bash
-# Navigate to backend directory
-cd backend
-
-# Create virtual environment (Linux/Mac)
-python3 -m venv venv
-source venv/bin/activate
-
-# Create virtual environment (Windows)
-python -m venv venv
-venv\Scripts\activate
-
-# Install dependencies
-pip install -r ../requirements.txt
-```
-
-### 3. Frontend Setup
-
-```bash
-# Navigate to frontend directory
-cd frontend
-
-# Install dependencies
-npm install
-```
-
-### 4. Database Setup
-
-The database will be automatically created on first run. The SQLite database file `cloudcost.db` will be created in the project root.
-
-## 🚀 Running the Application
-
-### Start Backend Server
-
-```bash
-# From backend directory
-cd backend
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
-
-The API will be available at `http://localhost:8000`
-
-API Documentation (Swagger UI): `http://localhost:8000/docs`
-
-### Start Frontend Development Server
-
-```bash
-# From frontend directory
-cd frontend
-npm start
-```
-
-The frontend will be available at `http://localhost:3000`
-
-## 📁 Project Structure
-
-```
-cloudcost/
-├── backend/                          # Backend API (FastAPI)
-│   ├── anomaly_engine/               # Anomaly detection module
-│   │   ├── router.py                 # API routes
-│   │   ├── services_ml.py            # ML models (Isolation Forest)
-│   │   └── services_cloud_dataset.py # Dataset services
-│   ├── forecasting_budget/            # Forecasting & budget module
-│   │   ├── router.py                 # API routes
-│   │   ├── services.py               # ARIMA forecasting services
-│   │   ├── services_dataset.py       # CSV dataset services
-│   │   └── Cloud Budget Dataset/     # Historical cost datasets
-│   ├── optimization_engine/          # Optimization module
-│   │   ├── router.py                 # API routes
-│   │   ├── services_ml.py             # ML optimization models
-│   │   └── train_optimization_model.py # Model training
-│   ├── zero_trust/                   # Zero trust security module
-│   │   ├── router.py                 # API routes
-│   │   ├── services.py               # Security analysis
-│   │   └── train_zero_trust_supervised.py # ML model training
-│   ├── finsight_dashboard/            # Dashboard module
-│   │   ├── monitor_router.py         # Monitoring endpoints
-│   │   ├── insight_router.py         # Insights endpoints
-│   │   └── ux_router.py              # UX tracking endpoints
-│   ├── routers/                      # Additional API routes
-│   │   ├── auth.py                   # Authentication
-│   │   ├── forecast.py               # Forecast endpoints
-│   │   ├── monitor.py                # Monitoring endpoints
-│   │   └── optimize.py               # Optimization endpoints
-│   ├── main.py                       # FastAPI application entry point
-│   ├── database.py                   # Database configuration
-│   ├── models.py                     # SQLAlchemy models
-│   ├── aws_client.py                 # AWS API client
-│   └── services_monitor.py           # Monitoring services
-│
-├── frontend/                         # Frontend application (React)
-│   ├── src/
-│   │   ├── api/                      # API client functions
-│   │   │   ├── forecast.js           # Forecast API
-│   │   │   ├── anomaly.js            # Anomaly API
-│   │   │   ├── optimize.js           # Optimization API
-│   │   │   └── zeroTrust.js          # Security API
-│   │   ├── components/               # React components
-│   │   │   ├── forecasting-budget/   # Forecast panel
-│   │   │   ├── anomaly-engine/       # Anomaly panel
-│   │   │   ├── optimization-engine/  # Optimization panel
-│   │   │   ├── zero-trust/           # Security panel
-│   │   │   └── finsight-dashboard/   # Dashboard components
-│   │   ├── App.jsx                   # Main app component
-│   │   └── index.jsx                 # Entry point
-│   ├── package.json                  # Frontend dependencies
-│   └── webpack.config.js             # Webpack configuration
-│
-├── reports/                          # Model performance reports
-│   └── model_metrics/                # ML model metrics (PNG charts)
-│
-├── logs/                             # Application logs
-│
-├── cloudcost.db                      # SQLite database (created on first run)
-├── requirements.txt                  # Python dependencies
-└── README.md                         # This file
-```
-
-## 🔧 Configuration
-
-### Environment Variables
-
-Create a `.env` file in the backend directory (optional):
-
-```env
-# AWS Configuration (optional)
-AWS_REGION=us-east-1
-AWS_ACCESS_KEY_ID=your_access_key
-AWS_SECRET_ACCESS_KEY=your_secret_key
-
-# Alert Webhook (optional)
-ALERT_WEBHOOK_URL=https://your-webhook-url.com
-
-# Database (defaults to SQLite)
-DATABASE_URL=sqlite:///./cloudcost.db
-```
-
-### Department Configuration
-
-Edit `backend/services_monitor.py` to configure departments:
-
-```python
-DEPARTMENTS = ["HR", "IT", "Dev", "Management"]
-
-DEPARTMENT_ALLOCATIONS = {
-    "Dev": 0.40,        # 40% of budget
-    "IT": 0.30,         # 30% of budget
-    "HR": 0.20,         # 20% of budget
-    "Management": 0.10  # 10% of budget
-}
-```
-
-## 📚 API Documentation
-
-### Forecast & Budget Endpoints
-
-- `POST /api/forecast/ingest/vps` - Ingest VPS costs
-- `POST /api/forecast/ingest/aws` - Ingest AWS costs
-- `GET /api/forecast/usage` - Get cost forecast
-- `GET /api/forecast/budget` - Compare forecast to budget
-- `GET /api/forecast/budget/allocation` - Get department allocations
-- `GET /api/forecast/scenarios` - Test budget scenarios
-- `POST /api/forecast/budget/recommendation` - Get budget recommendation
-
-### Anomaly Detection Endpoints
-
-- `GET /api/anomaly/detect` - Detect anomalies
-- `GET /api/anomaly/alerts` - Get anomaly alerts
-- `POST /api/anomaly/threshold` - Set anomaly thresholds
-
-### Optimization Endpoints
-
-- `GET /api/optimize/recommendations` - Get optimization recommendations
-- `POST /api/optimize/apply` - Apply optimization
-
-### Zero Trust Endpoints
-
-- `POST /api/zero-trust/analyze-password` - Analyze password security
-- `POST /api/zero-trust/login-event` - Analyze login event
-- `GET /api/zero-trust/risk-scores` - Get risk scores
-
-Full API documentation available at `http://localhost:8000/docs` when the server is running.
-
-## 🧪 Machine Learning Models
-
-### ARIMA Forecasting Model
-- **Location**: `backend/forecasting_budget/services.py`
-- **Model Type**: ARIMA(1,1,1)
-- **Training**: On-demand (trains when forecast is requested)
-- **Data Source**: Database (cloud_usage table) or CSV datasets
-- **Metrics**: MAE, RMSE, MAPE
-
-### Isolation Forest Anomaly Detection
-- **Location**: `backend/anomaly_engine/services_ml.py`
-- **Model Type**: Isolation Forest (unsupervised)
-- **Purpose**: Detect cost and usage anomalies
-
-### Optimization ML Model
-- **Location**: `backend/optimization_engine/services_ml.py`
-- **Purpose**: Generate cost optimization recommendations
-
-### Zero Trust Security Model
-- **Location**: `backend/zero_trust/services.py`
-- **Model Type**: Supervised learning (classification)
-- **Purpose**: Password security and login risk assessment
-
-## 📊 Data Sources
-
-### Database (SQLite)
-- **File**: `cloudcost.db`
-- **Tables**:
-  - `cloud_usage`: Daily cost and usage metrics
-  - `forecast_runs`: Forecast results and metrics
-  - `budget_alerts`: Budget alerts
-  - `anomaly_alerts`: Anomaly alerts
-  - `recommendations`: Optimization recommendations
-
-### CSV Datasets
-- **Location**: `backend/forecasting_budget/Cloud Budget Dataset/`
-- **Files**:
-  - `cloud_budget_2023_dataset.csv` - Main historical dataset
-  - `cloud_budget_2023_dataset_daily_account_summary.csv`
-  - `cloud_budget_2023_dataset_monthly_account_summary.csv`
-
-### External APIs
-- **AWS Cost Explorer API**: For fetching AWS costs
-- **VPS Metrics**: CPU and memory usage from VPS instances
-
-## 🎯 Usage Examples
-
-### Generate Forecast
-
-```python
-# Via API
-GET /api/forecast/usage?horizon_days=30&provider=vps
-
-# Response
-{
-  "run_id": 123,
-  "mae": 5.2,
-  "rmse": 7.8,
-  "mape": 4.5,
-  "history": [...],
-  "forecast": [...]
-}
-```
-
-### Compare to Budget
-
-```python
-# Via API
-GET /api/forecast/budget?monthly_budget=3000&horizon_days=30
-
-# Response
-{
-  "budget": 3000.0,
-  "projected_total": 3200.0,
-  "delta": 200.0,
-  "status": "over_budget_risk",
-  "metrics": {...}
-}
-```
-
-### Detect Anomalies
-
-```python
-# Via API
-GET /api/anomaly/detect?window_hours=24&provider=vps
-
-# Response
-{
-  "items": [
-    {
-      "resource_id": "vps-01",
-      "metric": "cost",
-      "value": 500.0,
-      "anomaly_score": 0.95,
-      "severity": "high"
-    }
-  ]
-}
-```
-
-## 🧪 Testing
-
-### Backend Tests
-
-```bash
-cd backend
-pytest tests/
-```
-
-### Frontend Tests
-
-```bash
-cd frontend
-npm test
-```
-
-## 📈 Model Performance Reports
-
-Model performance metrics and visualizations are stored in `reports/model_metrics/`:
-- Forecast accuracy metrics (MAE, RMSE, MAPE)
-- Anomaly detection performance (Precision, Recall, F1)
-- Optimization model metrics
-- Zero trust security model metrics
-
-## 🚢 Deployment
-
-### Using PM2 (Process Manager)
-
-```bash
-# Install PM2
-npm install -g pm2
-
-# Start application
-pm2 start ecosystem.config.js
-```
-
-### Docker (Coming Soon)
-
-```bash
-docker-compose up -d
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 🙏 Acknowledgments
-
-- **FastAPI** - Modern Python web framework
-- **React** - UI library
-- **statsmodels** - ARIMA time series models
-- **scikit-learn** - Machine learning library
-- **Recharts** - Chart library for React
-
-## 📞 Support
-
-For issues, questions, or contributions, please open an issue on GitHub.
-
-## 🔗 Related Documentation
-
-- [ARIMA Training & Datasets Guide](ARIMA_TRAINING_AND_DATASETS.md) - Detailed guide on ARIMA model training and dataset locations
+# FinSight – AI-Driven Cloud Cost & Security Intelligence
+
+## Project Overview
+
+**FinSight** is a unified AI-driven observability platform designed to tackle the dual challenges of **uncontrolled cloud spending (FinOps)** and **identity security (SecOps)**. Current cloud management solutions are often fragmented, creating disconnects between financial efficiency and system security. FinSight addresses this by integrating four specialized machine learning engines to proactively monitor, predict, secure, and optimize cloud resources in real-time.
+
+The platform bridges the gap between financial operations and security by correlating cost anomalies with security risks. It features a modern **React-based "Glass Pane" dashboard** for unified visualization and a robust **FastAPI backend** that simulates a live cloud environment. Key innovations include **Zero Trust behavioral biometrics**, **Explainable AI (XAI)** for anomaly root cause analysis, and **Risk-Aware Optimization** with self-healing deployment simulations.
+
+- **GitHub Repository:** (https://github.com/subodhi01/Research_Project)
+- **Live Demo:** (https://drive.google.com/drive/folders/1WH8dbiEV1r9RC_apvGbRgHN1wX9nmIw4?usp=drive_link)
+
+---
+
+## System Architecture
+
+The system follows a **Microservices-lite architecture**, orchestrated by a central API Gateway. It separates the frontend user experience from the heavy computational logic of the four core AI engines.
+
+### High-level Architecture Components:
+
+
+* **Frontend:** React SPA (Single Page Application) for interactive dashboards and biometric data capture.
+* **Backend:** FastAPI services handling request routing, authentication, and core business logic.
+* **AI/ML Engines:** Four distinct analytical modules for Security, Anomaly Detection, Forecasting, and Optimization.
+* **Simulation Layer:** A `psutil`-based service that mocks real-time cloud metrics (CPU, RAM, Network) to enable research testing without incurring actual cloud costs.
+* **Storage:** SQLite/SQLAlchemy for structured data persistence.
+
+### Architecture Diagram
+Image Link - https://drive.google.com/drive/folders/1WH8dbiEV1r9RC_apvGbRgHN1wX9nmIw4?usp=drive_link
+
+---
+
+## Technology Stack & Dependencies
+
+### Frontend
+* **React.js:** Component-based UI library for dynamic dashboards.
+* **Tailwind CSS:** Utility-first framework for modern, responsive styling.
+* **Recharts:** Composable charting library for visualizing time-series forecasts and anomalies.
+* **Axios:** HTTP client for API communication and intercepting JWT tokens.
+
+### AI / Machine Learning
+* **Scikit-Learn:** Core ML algorithms (Isolation Forest, Random Forest, SGD Classifier).
+* **Statsmodels:** ARIMA models for time-series forecasting.
+* **PyTorch / TensorFlow:** (Optional) Used for autoencoder-based anomaly detection.
+* **Pandas & NumPy:** Data manipulation and feature engineering.
+
+### Backend & Core Services
+* **FastAPI:** High-performance async web framework.
+* **SQLAlchemy:** ORM for database interactions.
+* **SQLite:** Lightweight relational database for research prototyping.
+* **Psutil:** System monitoring library used to simulate cloud resource usage.
+* **PyJWT:** Handling JSON Web Tokens for secure authentication.
+
+---
+
+## 1. Predictive Cloud Budgeting & Forecasting System
+> **Developed by: [RATHNAYAKA W.S.A.A. - IT22364456D]**
+
+This component addresses the challenge of budget overruns by predicting future cloud spending. It utilizes time-series forecasting to project future costs and enables dynamic "What-If" scenario planning for financial decision-making.
+
+### Workflow
+1.  **Historical Data Analysis:** Loads and processes historical cost and resource usage data.
+2.  **Workload-Aware Forecasting:** Utilizes **ARIMA** (AutoRegressive Integrated Moving Average) models combined with exogenous variables (such as Day of Week) to predict spending trends, accounting for seasonal patterns like weekend dips.
+3.  **Budget Risk Assessment:** Integrates the forecast curve to calculate the **"Projected Delta"** against the predefined monthly budget.
+4.  **Scenario Planning:** Provides an interactive interface where users can adjust variables (e.g., *"Growth +20%"*, *"Savings +10%"*) to instantly recalculate budget risk and financial projections.
+
+### Technologies Used
+* **Statsmodels (ARIMA):** Statistical modeling library for accurate time-series forecasting.
+* **Pandas:** Used for complex time-series indexing and resampling operations.
+* **Recharts:** For visualizing "Actual" vs. "Forecast" trend lines with confidence intervals.
+
+### Future Development
+In the future, the proposed system will extend its capabilities beyond checking a single VPS to connect directly with AWS. To improve predictive accuracy, the model will be upgraded from ARIMA to SARIMA, which allows for the use of more parameters. By improving the dataset through this live integration, the system will be able to provide much more precise financial forecasts.
+
+
+**Deployment:** **Deployment:** [http://158.220.115.171:8002/api/forecast/runs]
+                                [http://158.220.115.171:8002/api/forecast/department/forecast]
+
+---
+
+## 2. Cloud Cost & Resource Anomaly Detection System
+> **Developed by: [KARUNARATHNA S.N.W. - IT22916976]**
+
+This component focuses on the early detection of irregularities in cloud infrastructure. It moves beyond static threshold alerts to detect complex, multi-variate outliers in cost and resource usage using Unsupervised Learning techniques.
+
+### Workflow
+1.  **Metric Ingestion:** The system ingests real-time metrics including CPU utilization, memory usage, load averages, and daily cost.
+2.  **Detection Logic:**
+    * **Isolation Forest:** Detects multidimensional anomalies (e.g., high cost occurring during low traffic periods).
+    * **Z-Score Analysis:** Flags immediate statistical spikes that deviate significantly from the mean.
+    * **Autoencoder:** Identifies subtle anomalies by measuring high reconstruction errors in neural network outputs.
+3.  **Explainability Service:** The engine performs feature contribution analysis to generate human-readable root cause explanations (e.g., *"Anomaly driven by 400% spike in Disk I/O"*).
+4.  **Visualization:** Anomalies are plotted on the dashboard with calculated severity levels (**Critical** / **Warning** / **Info**).
+
+### Technologies Used
+* **Isolation Forest (Unsupervised Learning):** For robust outlier detection in high-dimensional data.
+* **Feature Contribution Analysis:** Logic algorithms to translate mathematical anomaly scores into descriptive text.
+* **FastAPI Background Tasks:** To process detection streams asynchronously without blocking the user interface.
+
+### Future Development
+In the future, the Anomaly Detection Engine will expand beyond its current training set of 14,440 records by integrating large-scale, real-world production data or authoritative external datasets to enhance model robustness. This richer data foundation will enable the deployment of complex multi-model ensembles, while current static thresholds will be replaced by dynamic, adaptive mechanisms that automatically tune sensitivity to historical volatility. By leveraging these authentic datasets and adaptive techniques, the system will significantly reduce false positives and ensure superior accuracy across dynamic cloud environments.
+
+**Deployment:** [http://158.220.115.171:8001/api/anomaly/detect/iforest]
+
+
+---
+
+## 3. Intelligent Resource Optimization & Rightsizing Engine
+> **Developed by: [DAHANAYAKA O.M.S. - IT22915672]**
+
+This component aims to reduce cloud waste by recommending precise rightsizing actions. Uniquely, it operates as a **"Risk-Aware"** system, ensuring that cost-saving measures do not compromise system stability.
+
+### Workflow
+1.  **Resource Analysis:** Continuously analyzes utilization patterns to classify resources as Idle, Underutilized, or Overutilized.
+2.  **Recommendation Generation:** Uses a **Random Forest Classifier** to determine the optimal action (Upsize, Downsize, or Shutdown) based on historical performance data.
+3.  **Risk-Adjusted Ranking:** Recommendations are ranked based on a composite score derived from *Savings Potential* versus *Stability Risk*.
+4.  **Simulated Canary Deployment:** Upon user approval:
+    * The backend tentatively simulates the configuration change.
+    * It monitors metrics for immediate performance degradation (latency or error rates).
+    * If instability is detected, an **Automatic Rollback** is triggered to preserve system availability.
+
+### Technologies Used
+* **Random Forest Classifier:** Supervised learning algorithm for decision-making and classification.
+* **Simulation Logic:** Custom Python logic to mock deployment states, latency injection, and rollback triggers.
+* **Interactive UI:** Dashboard controls for "One-Click Deploy" with real-time status feedback.
+
+### Future Development
+Reduction of Model Retraining Interval
+In future work, the continuous training interval of the Random Forest model will be reduced from one hour to fifteen minutes. This enhancement will allow the system to respond more rapidly to dynamic workload changes and cost fluctuations in cloud environments.
+
+**Deployment:** [http://158.220.115.171:8003/api/optimize/retrain]
+
+
+---
+
+## 4. Zero Trust Behavioral Authentication System
+> **Developed by: [MALLIKAHEWA S.R. - IT22324924]**
+
+This component replaces static password trust with continuous behavioral verification. It analyzes biometric patterns to ensure that the user interacting with the system is the legitimate account owner.
+
+### Workflow
+1.  **Biometric Data Capture:** The Frontend securely captures behavioral data during login, including:
+    * Typing Speed (WPM).
+    * Flight Time (latency between keystrokes).
+    * Contextual data (Browser tabs, Timezone, CapsLock usage).
+2.  **Risk Scoring:** The encrypted payload is sent to the backend where an **SGD Classifier** (Logistic Regression) calculates a real-time "Risk Score" (0.0 to 1.0).
+3.  **Access Decision:**
+    * **Low Risk:** Login proceeds normally.
+    * **High Risk:** Login is blocked (403 Forbidden), and the event is logged for security auditing.
+4.  **Admin Observability:** Administrators can access a "Real-time Login Events" panel to review specific risk factors (e.g., *"Unusually fast typing detected"*).
+
+### Technologies Used
+* **SGD Classifier:** Linear classifier optimized for high-dimensional sparse data to predict risk probability.
+* **JWT (JSON Web Tokens):** Claims-based authentication enriched with dynamic risk scores.
+* **Heuristics Engine:** Rule-based fallback checks (e.g., flagging bot-like typing speeds > 150 WPM).
+
+### Future Development
+1. Create a unique 'digital fingerprint' for each user based on their habits, allowing the system to instantly block hackers because they don't behave like the real owner.
+2. The system will automatically block login attempts from suspicious locations or unauthorized countries and immediately alert the administrator.
+
+**Deployment:** [http://158.220.115.171:8004/api/zero-trust/score-session]
 
